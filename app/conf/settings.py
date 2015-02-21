@@ -35,9 +35,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'alunyc.urls'
+ROOT_URLCONF = 'conf.urls'
 
-WSGI_APPLICATION = 'alunyc.wsgi.application'
+WSGI_APPLICATION = 'conf.wsgi.application'
 
 
 # Database
