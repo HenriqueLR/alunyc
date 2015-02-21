@@ -1,6 +1,6 @@
 *.tmp
 *.pyc
 *.swp
-*.sqlite
+*.sqlite3
 *.tmp
 *.log
