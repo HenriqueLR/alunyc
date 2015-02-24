@@ -1,7 +1,9 @@
 #encoding: utf-8
 
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import sys
+import os.path
+ 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -49,7 +51,7 @@ DATABASES = {
 }
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -60,5 +62,49 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files
+
+#STATIC FILES
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static_files')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+
+        os.path.join(BASE_DIR,'static'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_DIRS = (
+
+        os.path.join(BASE_DIR,'templates'),
+)
+
+# templates context processors
+TEMPLATE_CONTEXT_PROCESSORS = (
+'django.contrib.auth.context_processors.auth',
+'django.core.context_processors.debug',
+'django.core.context_processors.i18n',
+'django.core.context_processors.media',
+'django.core.context_processors.static',
+'django.contrib.messages.context_processors.messages',
+'django.core.context_processors.request',
+)
+
+from django.core.urlresolvers import reverse_lazy
+
+#session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
